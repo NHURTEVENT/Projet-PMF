@@ -1,4 +1,4 @@
-package Controler;
+package controller;
 
 import java.util.Observer;
 
@@ -13,6 +13,7 @@ public interface iController extends Observer{
 	void alerteHumidite();
 	void alertePorteOuvrte();
 	void changerConsigne();
-	
+	void setModel();
+	void setView();
 	
 }
