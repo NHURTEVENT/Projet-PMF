@@ -1,6 +1,7 @@
 package View;
 
-public interface iView {
+import java.util.Observer;
 
-	void update();
+public interface iView extends Observer {
+
 }

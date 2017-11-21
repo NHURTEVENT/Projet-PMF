@@ -16,10 +16,11 @@ import java.util.Observer;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-public class View extends JFrame implements Observer {
+public class View extends JFrame {
 
 	private JPanel contentPane;
 	JTextField tempConsigne;
+	public JButton btnConfirmer;
 
 	public void append(String s){
 		this.tempConsigne.setText(this.tempConsigne.getText()+s);
@@ -59,12 +60,7 @@ public class View extends JFrame implements Observer {
 		tempConsigne.setColumns(10);
 		
 		JButton btnConfirmer = new JButton("Confirmer");
-		btnConfirmer.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				//TODO ajouter l'event
-			}
-		});
+		
 		btnConfirmer.setBounds(245, 10, 89, 23);
 		contentPane.add(btnConfirmer);
 		
@@ -111,10 +107,5 @@ public class View extends JFrame implements Observer {
 		JLabel lblConsigne = new JLabel("Consigne");
 		lblConsigne.setBounds(43, 14, 46, 14);
 		contentPane.add(lblConsigne);
-	}
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 }
