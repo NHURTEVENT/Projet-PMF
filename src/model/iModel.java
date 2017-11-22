@@ -8,8 +8,8 @@ public interface iModel {
 	float tauxHumi = 0;
 	float tempPeltier = 0;
 	
-	float[] getTempInt();
-	void setTempInt(float[] tempInt);
+	float getTempInt();
+	void setTempInt(float tempInt);
 	float getTempExt();
 	void setTempExt(float tempExt);
 	float getTempConsigne();
@@ -18,4 +18,6 @@ public interface iModel {
 	void setTauxHumi(float tauxHumi);
 	float getTempPeltier();
 	void setTempPeltier(float tempPeltier);
+	public float[] getTempTable();
+	public void setTempTable(float[] tempTable);
 }
