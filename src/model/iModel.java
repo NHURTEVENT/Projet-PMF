@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public interface iModel {
 
@@ -18,4 +18,5 @@ public interface iModel {
 	void setTauxHumi(float tauxHumi);
 	float getTempPeltier();
 	void setTempPeltier(float tempPeltier);
+	void setLog(String txt);
 }

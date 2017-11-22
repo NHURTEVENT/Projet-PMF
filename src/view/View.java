@@ -1,4 +1,5 @@
-package View;
+package view;
+
 import java.awt.BorderLayout;
 
 
@@ -16,7 +17,7 @@ import java.util.Observer;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-public class View extends JFrame {
+public class View extends JFrame implements iView {
 
 	private JPanel contentPane;
 	JTextField tempConsigne;
@@ -107,5 +108,11 @@ public class View extends JFrame {
 		JLabel lblConsigne = new JLabel("Consigne");
 		lblConsigne.setBounds(43, 14, 46, 14);
 		contentPane.add(lblConsigne);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

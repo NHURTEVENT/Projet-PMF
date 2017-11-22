@@ -1,4 +1,4 @@
-package CAD;
+package cad;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,7 @@ import model.iModel;
 public class Connector implements iCAD {
 
 	private iModel model;
-	private SerialPort serialPort;
+	public SerialPort serialPort;
 	private CommPortIdentifier selectedPortIdentifier;
 	private Enumeration ports = null;
 	float tempInt, tempExt, tempPeltier, tauxHumi;
@@ -33,7 +33,7 @@ public class Connector implements iCAD {
 	final static int SPACE_ASCII = 32;
 	final static int DASH_ASCII = 45;
 	final static int NEW_LINE_ASCII = 10;
-	public String inputString = "0 0 0 0 0 ;";
+	public String inputString = "0_0_0_0_0_;";
 
 	public InputStream in;
 	public OutputStream out;
@@ -101,6 +101,7 @@ public class Connector implements iCAD {
 		}
 	}
 
+	@Deprecated
 	@Override
 	public void readSerialPort() {
 		byte[] buffer = new byte[1024];
@@ -131,14 +132,14 @@ public class Connector implements iCAD {
 
 	@Override
 	public void getCurrentTempInt() {
-		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		StringTokenizer stok = new StringTokenizer(inputString, "_");
 		String toConvert = stok.nextToken();
 		this.tempInt = Float.parseFloat(toConvert);
 	}
 
 	@Override
 	public void getCurrentTempExt() {
-		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		StringTokenizer stok = new StringTokenizer(inputString, "_");
 		stok.nextToken(); // on skip la température interne
 		String toConvert = stok.nextToken();
 		this.tempExt = Float.parseFloat(toConvert);
@@ -146,7 +147,7 @@ public class Connector implements iCAD {
 
 	@Override
 	public void getCurrentTempPeltier() {
-		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		StringTokenizer stok = new StringTokenizer(inputString, "_");
 		stok.nextToken(); // on skip la température interne
 		stok.nextToken(); // on skip la température externe
 		String toConvert = stok.nextToken();
@@ -155,7 +156,7 @@ public class Connector implements iCAD {
 
 	@Override
 	public void getCurrentTauxHumi() {
-		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		StringTokenizer stok = new StringTokenizer(inputString, "_");
 		stok.nextToken(); // on skip la température interne
 		stok.nextToken(); // on skip la température externe
 		stok.nextToken(); // on skip la température du pletier
@@ -165,7 +166,7 @@ public class Connector implements iCAD {
 
 	@Override
 	public void getCurrentConsigne() {
-		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		StringTokenizer stok = new StringTokenizer(inputString, "_");
 		stok.nextToken(); // on skip la température interne
 		stok.nextToken(); // on skip la température externe
 		stok.nextToken(); // on skip la température du pletier
@@ -188,7 +189,7 @@ public class Connector implements iCAD {
 		//if (){
 			writeSerialPort(Integer.toString(consigne));
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -214,8 +215,15 @@ public class Connector implements iCAD {
 		model.setTempPeltier(tempPeltier);
 		model.setTempConsigne(consigne);
 		model.setTauxHumi(tauxHumi);
+		
+		System.out.println("temp int: "+model.getTempInt());
+		System.out.println("temp ext: "+model.getTempExt());
+		System.out.println("temp peltier: "+model.getTempPeltier());
+		System.out.println("taux humi : "+model.getTauxHumi());
+		System.out.println("temp consigne: "+model.getTempConsigne());
+		
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

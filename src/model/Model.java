@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.util.Observable;
 
-public class Model extends Observable {
+public class Model extends Observable implements iModel {
 	
 	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
 
@@ -47,5 +47,11 @@ public class Model extends Observable {
 
 	public void setTempPeltier(float tempPeltier) {
 		this.tempPeltier = tempPeltier;
+	}
+
+	@Override
+	public void setLog(String txt) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,4 +1,4 @@
-package CAD;
+package cad;
 
 import model.iModel;
 
