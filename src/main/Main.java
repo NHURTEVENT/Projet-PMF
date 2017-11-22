@@ -15,21 +15,12 @@ import view.iView;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		// Create Model
 		iModel model = new Model();
-		
-		// Create View
 		iView view = new View();
-		
-		// Create Controller
-		iController ctrl = new Controller(model, view);
-		SwingUtilities.invokeLater(ctrl);
-		
-		// Create CAD
-		iCAD cad = new Connector(model);
-		Thread t = new Thread(cad);
-		t.start();
+		iCAD connector = new Connector(model);
+		Controller controller = new Controller(view, model, connector);
+		connector.connect(connector.searchForPorts());
+		connector.run();
 		
 	}
 	

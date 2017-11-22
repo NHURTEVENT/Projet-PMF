@@ -21,4 +21,12 @@ public interface iCAD extends Runnable {
 	public void getInputStream();
 	//set la variable locale avec le modèle fournis
 	public void setModel(iModel model);
+	
+	public String searchForPorts();
+	public void connect(String selectedPort);
+	public void readSerialPort();
+	
+	
+	public void setModel(Model model);
+	public void updateModel();
 }

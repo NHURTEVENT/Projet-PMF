@@ -3,20 +3,28 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
+import java.util.Observer;
 
+import cad.Connector;
+import cad.iCAD;
+import model.Model;
 import model.iModel;
+import view.View;
 import view.iView;
 
 public class Controller implements iController , ActionListener{
 
 	private iView view;
 	private iModel model;
+	private iCAD connector;
 
-	public Controller(iModel model, iView view) {
+	public Controller(iView view, iModel model, iCAD connector) {
 		this.view = view;
 		this.model = model;
-		this.view.btnConfirmer.addActionListener(this);
+		this.connector = connector;
+		//this.view.btnConfirmer.addActionListener(this);
 	}
+
 
 	// piloter le peltier
 	public void piloterPeltier(){
@@ -61,6 +69,7 @@ public class Controller implements iController , ActionListener{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 	@Override
 	public void run() {
