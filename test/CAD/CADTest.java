@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Model.Model;
+import model.Model;
 
 public class CADTest {
 	

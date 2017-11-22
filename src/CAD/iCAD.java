@@ -1,38 +1,41 @@
 package CAD;
 
-import Model.Model;
+import model.iModel;
 
 public interface iCAD extends Runnable {
 	
-	Model model=null;
+	iModel model=null;
 	float tempInt = 0;
 	float tempExt = 0;
 	float tauxHumi = 0;
 	int consigne = 0;
 	
 	//Lis la température intérieure mesurée
-	public float getCurrentTempInt(String input);
+	public void getCurrentTempInt();
 	
 	//Lis la température extérieure mesurée
-	public float getCurrentTempExt(String input);
+	public void getCurrentTempExt();
 	
 	//Lis la température calculée du module Peltier
-	public float getCurrentTempPeltier(String input);
+	public void getCurrentTempPeltier();
 	
 	//Lis le taux d'humidité mesuré
-	public float getCurrentTauxHumi(String input);
+	public void getCurrentTauxHumi();
 	
 	//Lis la consigne actuelle
-	public int getCurrentConsigne(String input);
+	public void getCurrentConsigne();
 	
 	//Lis la consigne dans le modèle et la transmet à l'Arduino
 	public void changerConsigne();
 	
-	//Lis les données fournies par l'Arduino
-	public void getCurrentInputStream();
-	
 	//set la variable locale avec le modèle fournis
-	public void setModel(Model model);
+	public void setModel(iModel model);
 	
 	public void updateModel();
+	
+	public String searchForPorts();
+	
+	public void connect(String selectedPort);
+	
+	public void readSerialPort();
 }

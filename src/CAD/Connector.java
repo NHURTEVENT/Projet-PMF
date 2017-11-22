@@ -1,80 +1,224 @@
 package CAD;
 
-import Model.Model;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+
+import gnu.io.CommPort;
+import gnu.io.CommPortIdentifier;
+import gnu.io.PortInUseException;
+import gnu.io.SerialPort;
+import model.iModel;
 
 public class Connector implements iCAD {
 
-	private Model model;
-	private float tempInt = 0;
-	private float tempExt = 0;
-	private float tauxHumi = 0;
-	private int consigne = 0;
+	private iModel model;
+	private SerialPort serialPort;
+	private CommPortIdentifier selectedPortIdentifier;
+	private Enumeration ports = null;
+	float tempInt, tempExt, tempPeltier, tauxHumi;
+	int consigne;
+	public int tempext, txhumi;
+	private String usedPort;
+	// map the port names to CommPortIdentifiers
+	private HashMap portMap = new HashMap();
 
-	public Connector(Model model) {
+	// the timeout value for connecting with the port
+	final static int TIMEOUT = 2000;
+
+	// ascii values for for certain things
+	final static int SPACE_ASCII = 32;
+	final static int DASH_ASCII = 45;
+	final static int NEW_LINE_ASCII = 10;
+	public String inputString = "0 0 0 0 0 ;";
+
+	public InputStream in;
+	public OutputStream out;
+
+	public Connector(iModel model) {
 		setModel(model);
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		Thread reader = new Thread(new SerialReader(this));
+		reader.start();
+		
+		while(true){
+		updateModel();
+		changerConsigne();
+		}
 
 	}
 
 	@Override
-	public void setModel(Model model) {
+	public String searchForPorts() {
+		ports = CommPortIdentifier.getPortIdentifiers();
+
+		while (ports.hasMoreElements()) {
+			CommPortIdentifier curPort = (CommPortIdentifier) ports.nextElement();
+
+			// get only serial ports
+			if (curPort.getPortType() == CommPortIdentifier.PORT_SERIAL) {
+				portMap.put(curPort.getName(), curPort);
+				return curPort.getName();
+				/*
+				 * window.cboxPorts.addItem(curPort.getName());
+				 * portMap.put(curPort.getName(), curPort);
+				 */
+			}
+		}
+		// throw exception aucun port
+		return null;
+	}
+
+	@Override
+	public void connect(String selectedPort) {
+
+		selectedPortIdentifier = (CommPortIdentifier) portMap.get(selectedPort);
+
+		CommPort commPort = null;
+
+		try {
+			// the method below returns an object of type CommPort
+			commPort = selectedPortIdentifier.open("TigerControlPanel", TIMEOUT);
+			// the CommPort object can be casted to a SerialPort object
+			serialPort = (SerialPort) commPort;
+			
+			in = serialPort.getInputStream();
+			out = serialPort.getOutputStream();
+
+			// CODE ON SETTING BAUD RATE ETC OMITTED
+			// XBEE PAIR ASSUMED TO HAVE SAME SETTINGS ALREADY
+		} catch (PortInUseException e) {
+			model.setLog(selectedPort + " is in use. (" + e.toString() + ")");
+		} catch (Exception e) {
+			model.setLog("Failed to open " + selectedPort + "(" + e.toString() + ")");
+		}
+	}
+
+	@Override
+	public void readSerialPort() {
+		byte[] buffer = new byte[1024];
+		int len = -1;
+		try {
+			while ((len = this.in.read(buffer)) > -1) {
+				inputString = new String(buffer, 0, len);
+				System.out.println(inputString);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void writeSerialPort(String data) {
+		try {
+			out.write(data.getBytes());
+		} catch (IOException e) {
+			System.out.print("error ");
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setModel(iModel model) {
 		this.model = model;
 	}
 
 	@Override
-	public float getCurrentTempInt(String input) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void getCurrentTempInt() {
+		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		String toConvert = stok.nextToken();
+		this.tempInt = Float.parseFloat(toConvert);
 	}
 
-	public void getInputStream() {
-		// TODO récup les valeurs et les mettre dans les variables
+	@Override
+	public void getCurrentTempExt() {
+		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		stok.nextToken(); // on skip la température interne
+		String toConvert = stok.nextToken();
+		this.tempExt = Float.parseFloat(toConvert);
+	}
+
+	@Override
+	public void getCurrentTempPeltier() {
+		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		stok.nextToken(); // on skip la température interne
+		stok.nextToken(); // on skip la température externe
+		String toConvert = stok.nextToken();
+		this.tempPeltier = Float.parseFloat(toConvert);
+	}
+
+	@Override
+	public void getCurrentTauxHumi() {
+		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		stok.nextToken(); // on skip la température interne
+		stok.nextToken(); // on skip la température externe
+		stok.nextToken(); // on skip la température du pletier
+		String toConvert = stok.nextToken();
+		this.tauxHumi = Float.parseFloat(toConvert);
+	}
+
+	@Override
+	public void getCurrentConsigne() {
+		StringTokenizer stok = new StringTokenizer(inputString, " ");
+		stok.nextToken(); // on skip la température interne
+		stok.nextToken(); // on skip la température externe
+		stok.nextToken(); // on skip la température du pletier
+		stok.nextToken(); // on skip le taux d'humidité
+		String toConvert = stok.nextToken();
+		try {
+			this.consigne = Integer.parseInt(toConvert);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
 	public void changerConsigne() {
 		// TODO Auto-generated method stub
 		// lis la consgine dans le model
-	}
-
-	@Override
-	public float getCurrentTempExt(String input) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public float getCurrentTempPeltier(String input) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public float getCurrentTauxHumi(String input) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getCurrentConsigne(String input) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void getCurrentInputStream() {
-		// TODO Auto-generated method stub
+		
+		//check si le port est diponible
+		//if (){
+			writeSerialPort(Integer.toString(consigne));
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		//}
 		
 	}
 
 	@Override
 	public void updateModel() {
-		// TODO Auto-generated method stub
+
 		
+		
+		//on affecte découpe la string reçue 
+		//et on affecte les variables locales reçues
+		getCurrentTempInt();
+		getCurrentTempExt();
+		getCurrentTempPeltier();
+		getCurrentTauxHumi();
+		getCurrentConsigne();
+		model.setTempInt(tempInt);
+		model.setTempExt(tempExt);
+		model.setTempPeltier(tempPeltier);
+		model.setTempConsigne(consigne);
+		model.setTauxHumi(tauxHumi);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
