@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Observer;
+
 public interface iModel {
 
 	float tempInt = 0;
@@ -18,5 +20,10 @@ public interface iModel {
 	void setTauxHumi(float tauxHumi);
 	float getTempPeltier();
 	void setTempPeltier(float tempPeltier);
+	public float[] getTempTable();
+	public void setTempTable(float[] tempTable);
 	void setLog(String txt);
+	void hasBeenChanged();
+	void doAddObserver(Observer obs);
+	String getLog();
 }

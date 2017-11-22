@@ -17,10 +17,11 @@ public class Main {
 	public static void main(String[] args) {
 		iModel model = new Model();
 		iView view = new View();
-		iCAD connector = new Connector(model);
+		iCAD connector = new Connector(model,view);
 		Controller controller = new Controller(view, model, connector);
 		connector.connect(connector.searchForPorts());
 		connector.run();
+		view.makeVisible(true);
 		
 	}
 	

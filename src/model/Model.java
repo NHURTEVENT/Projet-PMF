@@ -1,12 +1,28 @@
 package model;
 
 import java.util.Observable;
+import java.util.Observer;
 
 public class Model extends Observable implements iModel {
 	
 	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
-
+	private float[] tempTable;
+	public String log;
+	
 	public Model() {
+		tempInt = 0;
+		tempExt = 0;
+		tempConsigne =0;
+		tauxHumi = 0;
+		tempPeltier = 0;
+	}
+
+	public float[] getTempTable() {
+		return tempTable;
+	}
+
+	public void setTempTable(float[] tempTable) {
+		this.tempTable = tempTable;
 	}
 
 	public float getTempInt() {
@@ -48,10 +64,21 @@ public class Model extends Observable implements iModel {
 	public void setTempPeltier(float tempPeltier) {
 		this.tempPeltier = tempPeltier;
 	}
-
-	@Override
-	public void setLog(String txt) {
-		// TODO Auto-generated method stub
-		
+	
+	public void setLog(String txt){
+		this.log = txt;
+	}
+	
+	public void hasBeenChanged() {
+		setChanged();
+		this.notifyObservers();
+	}
+	
+	public void doAddObserver(Observer obs){
+		this.addObserver(obs);
+	}
+	
+	public String getLog(){
+		return this.log;
 	}
 }

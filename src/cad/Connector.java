@@ -12,6 +12,7 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
 import model.iModel;
+import view.iView;
 
 public class Connector implements iCAD {
 
@@ -37,9 +38,11 @@ public class Connector implements iCAD {
 
 	public InputStream in;
 	public OutputStream out;
+	private iView view;
 
-	public Connector(iModel model) {
+	public Connector(iModel model, iView view) {
 		setModel(model);
+		this.view = view;
 	}
 
 	@Override
@@ -95,10 +98,17 @@ public class Connector implements iCAD {
 			// CODE ON SETTING BAUD RATE ETC OMITTED
 			// XBEE PAIR ASSUMED TO HAVE SAME SETTINGS ALREADY
 		} catch (PortInUseException e) {
-			model.setLog(selectedPort + " is in use. (" + e.toString() + ")");
-		} catch (Exception e) {
-			model.setLog("Failed to open " + selectedPort + "(" + e.toString() + ")");
+			model.setLog(" "+selectedPort + " is in use. (" + e.toString() + ")");
+			view.setLog(model.getLog());
+		}catch (NullPointerException e){
+			model.setLog(" Erreur : la carte n'est pas connectée");
+			view.setLog(model.getLog());
 		}
+		catch (Exception e) {
+			model.setLog(" Failed to open " + selectedPort + "(" + e.toString() + ")");
+			view.setLog(model.getLog());
+		}
+		
 	}
 
 	@Deprecated
@@ -221,6 +231,8 @@ public class Connector implements iCAD {
 		System.out.println("temp peltier: "+model.getTempPeltier());
 		System.out.println("taux humi : "+model.getTauxHumi());
 		System.out.println("temp consigne: "+model.getTempConsigne());
+		model.hasBeenChanged();
+		
 		
 		try {
 			Thread.sleep(2000);
