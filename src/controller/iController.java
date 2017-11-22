@@ -2,18 +2,17 @@ package controller;
 
 import java.util.Observer;
 
-import model.Model;
-import view.View;
+import model.iModel;
+import view.iView;
 
 public interface iController extends Observer, Runnable {
-	View view=null;
-	Model model=null;
+	iView view=null;
+	iModel model=null;
 	
-	void piloterPeltier();
 	void alerteHumidite();
 	void alertePorteOuvrte();
-	void changerConsigne();
-	void setModel();
-	void setView();
+	void setConsigne();
+	void setModel(iModel model);
+	void setView(iView view);
 	
 }

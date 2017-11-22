@@ -18,28 +18,27 @@ public class Controller implements iController , ActionListener{
 		this.view.btnConfirmer.addActionListener(this);
 	}
 
-	// piloter le peltier
-	public void piloterPeltier(){
-		
-	}
 	
-	// alerte humidité
-	public void alerteHumidite(){
-		
-	}
-	
-	// alerte porte ouverte
-	public void alertePorteOuvrte(){
-		
-	}
-	
-	// changer consigne
-	public void changerConsigne(){
-		
-	}
-
+	// Alerte humidité
 	@Override
-	public void update(Observable o, Object arg) {
+	public void alerteHumidite() {
+		
+		if(model.getTauxHumi() > 80) {
+			
+		}
+		
+	}
+	
+	// Alerte porte ouverte
+	@Override
+	public void alertePorteOuvrte() {
+		
+		
+		
+	}
+	
+	@Override
+	public void update(Observable obs, Object obj) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -51,19 +50,23 @@ public class Controller implements iController , ActionListener{
 	}
 
 	@Override
-	public void setModel() {
-		// TODO Auto-generated method stub
-		
+	public void setModel(iModel model) {
+		this.model = model;
 	}
 
 	@Override
-	public void setView() {
-		// TODO Auto-generated method stub
-		
+	public void setView(iView view) {
+		this.view = view;
 	}
 
 	@Override
 	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setConsigne() {
 		// TODO Auto-generated method stub
 		
 	}
