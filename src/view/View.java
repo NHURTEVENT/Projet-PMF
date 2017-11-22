@@ -1,22 +1,15 @@
-package View;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
-import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-public class View extends JFrame {
+public class View extends JFrame implements iView {
 
 	private JPanel contentPane;
 	JTextField tempConsigne;

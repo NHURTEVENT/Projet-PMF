@@ -5,4 +5,4 @@
  * @author Nico
  *
  */
-package Model;
+package model;

@@ -1,12 +1,12 @@
-package CAD;
+package cad;
 
-import Model.Model;
+import model.iModel;
 
 public class Connector implements iCAD {
 
-	private Model model;
+	private iModel model;
 
-	public Connector(Model model) {
+	public Connector(iModel model) {
 		setModel(model);
 	}
 
@@ -17,7 +17,7 @@ public class Connector implements iCAD {
 	}
 
 	@Override
-	public void setModel(Model model) {
+	public void setModel(iModel model) {
 		this.model = model;
 	}
 

@@ -3,17 +3,16 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
-import java.util.Observer;
 
-import Model.Model;
-import View.View;
+import model.iModel;
+import view.iView;
 
 public class Controller implements iController , ActionListener{
 
-	private View view;
-	private Model model;
+	private iView view;
+	private iModel model;
 
-	public Controller(View view, Model model) {
+	public Controller(iModel model, iView view) {
 		this.view = view;
 		this.model = model;
 		this.view.btnConfirmer.addActionListener(this);
@@ -59,6 +58,12 @@ public class Controller implements iController , ActionListener{
 
 	@Override
 	public void setView() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() {
 		// TODO Auto-generated method stub
 		
 	}

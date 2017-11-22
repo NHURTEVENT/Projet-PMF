@@ -2,10 +2,10 @@ package controller;
 
 import java.util.Observer;
 
-import Model.Model;
-import View.View;
+import model.Model;
+import view.View;
 
-public interface iController extends Observer{
+public interface iController extends Observer, Runnable {
 	View view=null;
 	Model model=null;
 	

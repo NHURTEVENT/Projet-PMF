@@ -1,6 +1,7 @@
-package CAD;
+package cad;
 
-import Model.Model;
+import model.Model;
+import model.iModel;
 
 public interface iCAD extends Runnable {
 	
@@ -19,5 +20,5 @@ public interface iCAD extends Runnable {
 	//Lis les données fournies par l'arduino
 	public void getInputStream();
 	//set la variable locale avec le modèle fournis
-	public void setModel(Model model);
+	public void setModel(iModel model);
 }

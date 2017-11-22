@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.util.Observable;
 
-public class Model extends Observable {
+public class Model extends Observable implements iModel {
 	
 	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
 
