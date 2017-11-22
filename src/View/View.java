@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class View extends JFrame {
+public class View extends JFrame implements iView {
 
 	private JPanel contentPane;
 	JTextField tempConsigne;
@@ -114,6 +114,7 @@ public class View extends JFrame {
 		contentPane.add(lblConsigne);
 	}
 	
+	@Override
 	public void switchDoorIcon(int i) {
 		
 		if(i == 0)	
@@ -123,6 +124,7 @@ public class View extends JFrame {
 		
 	}
 	
+	@Override
 	public void switchHumiIcon(int i) {
 		
 		if(i == 0)
