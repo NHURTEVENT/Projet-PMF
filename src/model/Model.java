@@ -4,16 +4,17 @@ import java.util.Observable;
 
 public class Model extends Observable implements iModel {
 	
-	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
-
+	private float tempExt, tempConsigne, tauxHumi, tempPeltier;
+	private float[] tempInt;
+	
 	public Model() {
 	}
 
-	public float getTempInt() {
+	public float[] getTempInt() {
 		return tempInt;
 	}
 
-	public void setTempInt(float tempInt) {
+	public void setTempInt(float[] tempInt) {
 		this.tempInt = tempInt;
 	}
 
