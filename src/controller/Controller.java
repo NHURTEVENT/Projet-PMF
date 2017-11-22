@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 
+import javax.swing.JButton;
+
 import model.iModel;
 import view.iView;
 
@@ -23,17 +25,10 @@ public class Controller implements iController , ActionListener{
 	@Override
 	public void alerteHumidite() {
 		
-		if(model.getTauxHumi() > 90) {
-			
-			// Set icon 1 in view
-			
-			
-		} else {
-			
-			// Set icon 2 in view
-			
-			
-		}
+		if(model.getTauxHumi() > 90)			
+			view.switchHumiIcon(1);
+		else	
+			view.switchHumiIcon(0);
 		
 	}
 	
@@ -43,30 +38,30 @@ public class Controller implements iController , ActionListener{
 		
 		float[] tempTable = model.getTempTable();
 		
-		// Si la temperature augmente de 10 degres entre la premiere et la derniere case du tableau
 		if(tempTable[10] - tempTable[0] > 10) {
-			
-			// Set icon 1 in view
-			
-			
+			view.switchDoorIcon(1);
 		} else {
-
-			// Set icon 2 in view
-			
-			
+			view.switchDoorIcon(0);
 		}
 		
 	}
 	
 	@Override
 	public void update(Observable obs, Object obj) {
-		// TODO Auto-generated method stub
+		
+		view.tempInt.setText(String.valueOf(model.getTempInt()));
+		view.tempExt.setText(String.valueOf(model.getTempExt()));
+		view.tauxHumi.setText(String.valueOf(model.getTauxHumi()));
+		view.tempPeltier.setText(String.valueOf(model.getTempPeltier()));
+		view.tempConsigne.setText(String.valueOf(model.getTempConsigne()));
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		if (e.getSource() instanceof JButton)
+			model.setTempConsigne(Float.parseFloat(view.tempConsigne.getText()));
 		
 	}
 
@@ -75,28 +70,18 @@ public class Controller implements iController , ActionListener{
 		
 		while(true) {
 			
-			// TODO
-			
-			// Update Values in view
-			// Humidity Alert
-			// Open Door Alert
+			alerteHumidite();
+			alertePorteOuvrte();
 			
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
 		}
-		
 	}
 
 	// Getters & Setters
-	@Override
-	public void setConsigne() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void setModel(iModel model) {
