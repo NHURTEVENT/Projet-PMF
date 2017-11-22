@@ -23,7 +23,15 @@ public class Controller implements iController , ActionListener{
 	@Override
 	public void alerteHumidite() {
 		
-		if(model.getTauxHumi() > 80) {
+		if(model.getTauxHumi() > 90) {
+			
+			// Set icon 1 in view
+			
+			
+		} else {
+			
+			// Set icon 2 in view
+			
 			
 		}
 		
@@ -33,7 +41,20 @@ public class Controller implements iController , ActionListener{
 	@Override
 	public void alertePorteOuvrte() {
 		
+		float[] tempTable = model.getTempTable();
 		
+		// Si la temperature augmente de 10 degres entre la premiere et la derniere case du tableau
+		if(tempTable[10] - tempTable[0] > 10) {
+			
+			// Set icon 1 in view
+			
+			
+		} else {
+
+			// Set icon 2 in view
+			
+			
+		}
 		
 	}
 	
@@ -50,6 +71,34 @@ public class Controller implements iController , ActionListener{
 	}
 
 	@Override
+	public void run() {
+		
+		while(true) {
+			
+			// TODO
+			
+			// Update Values in view
+			// Humidity Alert
+			// Open Door Alert
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+
+	// Getters & Setters
+	@Override
+	public void setConsigne() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public void setModel(iModel model) {
 		this.model = model;
 	}
@@ -57,17 +106,5 @@ public class Controller implements iController , ActionListener{
 	@Override
 	public void setView(iView view) {
 		this.view = view;
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setConsigne() {
-		// TODO Auto-generated method stub
-		
 	}
 }

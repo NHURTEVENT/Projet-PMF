@@ -18,4 +18,6 @@ public interface iModel {
 	void setTauxHumi(float tauxHumi);
 	float getTempPeltier();
 	void setTempPeltier(float tempPeltier);
+	public float[] getTempTable();
+	public void setTempTable(float[] tempTable);
 }
