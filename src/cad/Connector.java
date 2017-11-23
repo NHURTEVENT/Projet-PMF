@@ -51,10 +51,15 @@ public class Connector implements iCAD {
 		Thread reader = new Thread(new SerialReader(this));
 		reader.start();
 		
-		while(true){
-		updateModel();
-		changerConsigne();
-		}
+		//Thread writer = new Thread(SerialWriter(this));
+		
+		Thread updater = new Thread(new UpdateModel(this));
+		updater.start();
+		/*while(true){
+			
+			updateModel();
+			//changerConsigne();
+		}*/
 
 	}
 
@@ -98,15 +103,15 @@ public class Connector implements iCAD {
 			// CODE ON SETTING BAUD RATE ETC OMITTED
 			// XBEE PAIR ASSUMED TO HAVE SAME SETTINGS ALREADY
 		} catch (PortInUseException e) {
-			model.setLog(" "+selectedPort + " is in use. (" + e.toString() + ")");
-			view.setLog(model.getLog());
+			getModel().setLog(" "+selectedPort + " is in use. (" + e.toString() + ")");
+			view.setLog(getModel().getLog());
 		}catch (NullPointerException e){
-			model.setLog(" Erreur : la carte n'est pas connectée");
-			view.setLog(model.getLog());
+			getModel().setLog(" Erreur : la carte n'est pas connectée");
+			view.setLog(getModel().getLog());
 		}
 		catch (Exception e) {
-			model.setLog(" Failed to open " + selectedPort + "(" + e.toString() + ")");
-			view.setLog(model.getLog());
+			getModel().setLog(" Failed to open " + selectedPort + "(" + e.toString() + ")");
+			view.setLog(getModel().getLog());
 		}
 		
 	}
@@ -197,13 +202,16 @@ public class Connector implements iCAD {
 		
 		//check si le port est diponible
 		//if (){
-			writeSerialPort(Integer.toString(consigne));
+		String str = "c";
+			writeSerialPort(str);
+			
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			writeSerialPort(Integer.toString(getModel().getConsigneVoulue()));
 		//}
 		
 	}
@@ -211,7 +219,13 @@ public class Connector implements iCAD {
 	@Override
 	public void updateModel() {
 
-		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		writeSerialPort("hi");
 		
 		//on affecte découpe la string reçue 
 		//et on affecte les variables locales reçues
@@ -220,18 +234,18 @@ public class Connector implements iCAD {
 		getCurrentTempPeltier();
 		getCurrentTauxHumi();
 		getCurrentConsigne();
-		model.setTempInt(tempInt);
-		model.setTempExt(tempExt);
-		model.setTempPeltier(tempPeltier);
-		model.setTempConsigne(consigne);
-		model.setTauxHumi(tauxHumi);
+		getModel().setTempInt(tempInt);
+		getModel().setTempExt(tempExt);
+		getModel().setTempPeltier(tempPeltier);
+		getModel().setTempConsigne(consigne);
+		getModel().setTauxHumi(tauxHumi);
 		
-		System.out.println("temp int: "+model.getTempInt());
-		System.out.println("temp ext: "+model.getTempExt());
-		System.out.println("temp peltier: "+model.getTempPeltier());
-		System.out.println("taux humi : "+model.getTauxHumi());
-		System.out.println("temp consigne: "+model.getTempConsigne());
-		model.hasBeenChanged();
+		System.out.println("temp int: "+getModel().getTempInt());
+		System.out.println("temp ext: "+getModel().getTempExt());
+		System.out.println("temp peltier: "+getModel().getTempPeltier());
+		System.out.println("taux humi : "+getModel().getTauxHumi());
+		System.out.println("temp consigne: "+getModel().getTempConsigne());
+		getModel().hasBeenChanged();
 		
 		
 		try {
@@ -239,6 +253,10 @@ public class Connector implements iCAD {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public iModel getModel() {
+		return model;
 	}
 
 }

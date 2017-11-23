@@ -5,7 +5,8 @@ import java.util.Observer;
 
 public class Model extends Observable implements iModel {
 	
-	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
+	private float tempInt, tempExt, tauxHumi, tempPeltier;
+	private int consigneVoulue,tempConsigne;
 	private float[] tempTable;
 	public String log;
 	
@@ -15,6 +16,7 @@ public class Model extends Observable implements iModel {
 		tempConsigne =0;
 		tauxHumi = 0;
 		tempPeltier = 0;
+		consigneVoulue= 0;
 	}
 
 	public float[] getTempTable() {
@@ -41,12 +43,20 @@ public class Model extends Observable implements iModel {
 		this.tempExt = tempExt;
 	}
 
-	public float getTempConsigne() {
+	public int getTempConsigne() {
 		return tempConsigne;
 	}
 
-	public void setTempConsigne(float tempConsigne) {
+	public void setTempConsigne(int tempConsigne) {
 		this.tempConsigne = tempConsigne;
+	}
+	
+	public int getConsigneVoulue() {
+		return this.consigneVoulue;
+	}
+	
+	public void setConsigneVoulue(int tempConsigne) {
+		this.consigneVoulue = tempConsigne;
 	}
 
 	public float getTauxHumi() {

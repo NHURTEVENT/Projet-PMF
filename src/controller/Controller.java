@@ -84,7 +84,7 @@ public class Controller implements iController, ActionListener {
 		if (e.getSource() instanceof JButton)
 			try {
 				if (Integer.valueOf(view.getConsigne()) > -12.0 && Integer.valueOf(view.getConsigne()) < 30.0) {
-					model.setTempConsigne(Integer.valueOf(view.getConsigne()));
+					model.setConsigneVoulue(Integer.valueOf(view.getConsigne()));
 					connector.changerConsigne();
 				} else {
 					setLog(" Merci d'entrer un entier entre -12 et 30 °C");
