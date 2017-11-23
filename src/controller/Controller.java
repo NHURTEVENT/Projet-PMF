@@ -74,9 +74,13 @@ public class Controller implements iController, ActionListener {
 	@Override
 	public void updateGraph() {
 		
-		this.view.getDataset().addValue(model.getTempInt(), "Temperature Interieure", sdf.format(new Date()));
-		this.view.getDataset().addValue(model.getTempInt(), "Temperature Exterieure", sdf.format(new Date()));
+		// Update Temperature Graph
+		this.view.getDatasetTemp().addValue(model.getTempInt(), "Temperature Interieure", sdf.format(new Date()));
+		this.view.getDatasetTemp().addValue(model.getTempExt(), "Temperature Exterieure", sdf.format(new Date()));
+		this.view.getDatasetTemp().addValue(model.getTempConsigne(), "Temperature Consigne", sdf.format(new Date()));
 		
+		// Update Humidity Graph
+		this.view.getDatasetHumi().addValue(model.getTauxHumi(), "Taux Humidité", sdf.format(new Date()));
 	}
 	
 	@Override

@@ -24,7 +24,8 @@ public interface iView {
 	void setTempPeltier(String temp);
 	void setConsigne(String consigne);
 	void setLog(String str);
-	DefaultCategoryDataset getDataset();
+	DefaultCategoryDataset getDatasetTemp();
+	DefaultCategoryDataset getDatasetHumi();
 	
 	String getConsigne();
 	JButton getButton();
