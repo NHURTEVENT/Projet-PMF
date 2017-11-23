@@ -4,6 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import org.jfree.data.category.DefaultCategoryDataset;
+
 public interface iView {
 
 	JLabel tempInt = null;
@@ -22,6 +24,8 @@ public interface iView {
 	void setTempPeltier(String temp);
 	void setConsigne(String consigne);
 	void setLog(String str);
+	DefaultCategoryDataset getDataset();
+	
 	String getConsigne();
 	JButton getButton();
 	

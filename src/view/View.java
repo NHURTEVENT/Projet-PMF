@@ -4,8 +4,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,26 +41,14 @@ public class View extends JFrame implements iView {
 	private JScrollPane log;
 	private JTextArea txtArea;
 	
+	// Chart Stuff
+	private JFreeChart chart;
+	private ChartPanel chartPanel;
+	private DefaultCategoryDataset dataset;
+	
 	public void append(String s) {
 		this.tempConsigne.setText(this.tempConsigne.getText()+s);
 	}
-	/**
-	 * Launch the application.
-	 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-					connector = new Connector(this);
-					connector.searchForPorts();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
 	/**
 	 * Create the frame.
@@ -74,7 +71,7 @@ public class View extends JFrame implements iView {
 		txtArea = new JTextArea(300,800);
 
 		log = new JScrollPane(txtArea);
-		log.setBounds(233, 152, 300, 200);
+		log.setBounds(10, 200, 300, 200);
 		contentPane.add(log);
 		
 		
@@ -135,6 +132,15 @@ public class View extends JFrame implements iView {
 		consigneActuelle = new JLabel("");
 		consigneActuelle.setBounds(154, 26, 46, 14);
 		contentPane.add(consigneActuelle);
+		
+		dataset = new DefaultCategoryDataset();
+		chart = ChartFactory.createLineChart("", "Temps (Sec)", "Temperature (°C)", dataset);
+		
+		chartPanel = new ChartPanel(chart);
+		chartPanel.setBounds(400,10,800,400);
+		//chartPanel.setPreferredSize(new Dimension(800, 400));
+		contentPane.add(chartPanel);
+		
 		//TODO trouver comment suppr ça
 		this.setVisible(true);
 	}
@@ -201,6 +207,8 @@ public class View extends JFrame implements iView {
 		this.txtArea.setText(this.txtArea.getText()+"\n"+txt);
 	}
 	
-	
+	public DefaultCategoryDataset getDataset() {
+		return dataset;
+	}
 	
 }

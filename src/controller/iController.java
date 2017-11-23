@@ -13,5 +13,6 @@ public interface iController extends Observer, Runnable {
 	void alertePorteOuvrte();
 	void setModel(iModel model);
 	void setView(iView view);
+	void updateGraph();
 	
 }

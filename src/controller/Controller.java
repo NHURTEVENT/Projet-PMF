@@ -2,6 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Observable;
 
 import javax.swing.JButton;
@@ -16,11 +18,16 @@ public class Controller implements iController, ActionListener {
 	private iView view;
 	private iModel model;
 	private iCAD connector;
+	
+	private SimpleDateFormat sdf;
 
-	public Controller(iView view, iModel model, iCAD controller) {
+	public Controller(iView view, iModel model, iCAD connector) {
 		this.view = view;
 		this.model = model;
 		this.connector = connector;
+		
+		sdf = new SimpleDateFormat("HH:mm:ss");
+		
 		this.view.getButton().addActionListener(this);
 		model.doAddObserver(this);
 	}
@@ -60,19 +67,31 @@ public class Controller implements iController, ActionListener {
 		view.setTempPeltier(String.valueOf(model.getTempPeltier()));
 		view.setConsigne(String.valueOf(model.getTempConsigne()));
 
+		updateGraph();
+		
 	}
 
+	@Override
+	public void updateGraph() {
+		
+		this.view.getDataset().addValue(model.getTempInt(), "Temperature Interieure", sdf.format(new Date()));
+		this.view.getDataset().addValue(model.getTempInt(), "Temperature Exterieure", sdf.format(new Date()));
+		
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() instanceof JButton)
 			try {
 				if (Integer.valueOf(view.getConsigne()) > -12.0 && Integer.valueOf(view.getConsigne()) < 30.0) {
 					model.setTempConsigne(Integer.valueOf(view.getConsigne()));
+					connector.changerConsigne();
 				} else {
 					setLog(" Merci d'entrer un entier entre -12 et 30 °C");
 				}
 			} catch (Exception e1) {
 				setLog(" Erreur le nombre rentré n'est pas un entier");
+				setLog(e1.getMessage());
 			}
 
 	}
@@ -108,6 +127,6 @@ public class Controller implements iController, ActionListener {
 	public void setLog(String str){
 		model.setLog(str);
 		view.setLog(str);
-		System.out.println("heyyyyyyyyyyyyyyyyyyyyy"+str);
+		System.out.println("heyyyyyyyyyyyyyyyyyyyyy " + str);
 	}
 }
