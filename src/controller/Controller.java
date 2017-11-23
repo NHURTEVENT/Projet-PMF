@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.util.Observable;
 
 import javax.swing.JButton;
@@ -36,9 +37,9 @@ public class Controller implements iController , ActionListener{
 	@Override
 	public void alertePorteOuvrte() {
 		
-		float[] tempTable = model.getTempTable();
+		LinkedList tempTable = model.getTempTable();
 		
-		if(tempTable[10] - tempTable[0] > 10) {
+		if((float) tempTable.getLast() - (float) tempTable.getFirst() > 4) {
 			view.switchDoorIcon(1);
 		} else {
 			view.switchDoorIcon(0);

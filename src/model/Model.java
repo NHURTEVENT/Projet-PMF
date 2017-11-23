@@ -1,21 +1,21 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Observable;
 
 public class Model extends Observable implements iModel {
 	
 	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
-	private float[] tempTable;
+	private LinkedList tempTable;
 	
 	public Model() {
-		tempTable = new float[10];
 	}
-	
-	public float[] getTempTable() {
+
+	public LinkedList getTempTable() {
 		return tempTable;
 	}
 
-	public void setTempTable(float[] tempTable) {
+	public void setTempTable(LinkedList tempTable) {
 		this.tempTable = tempTable;
 	}
 
