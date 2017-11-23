@@ -11,10 +11,6 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-
-import java.awt.Dimension;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -42,9 +38,12 @@ public class View extends JFrame implements iView {
 	private JTextArea txtArea;
 	
 	// Chart Stuff
-	private JFreeChart chart;
-	private ChartPanel chartPanel;
-	private DefaultCategoryDataset dataset;
+	private JFreeChart chartTemp;
+	private JFreeChart chartHumi;
+	private ChartPanel chartTempPanel;
+	private ChartPanel chartHumiPanel;
+	private DefaultCategoryDataset datasetTemp;
+	private DefaultCategoryDataset datasetHumi;
 	
 	public void append(String s) {
 		this.tempConsigne.setText(this.tempConsigne.getText()+s);
@@ -55,7 +54,7 @@ public class View extends JFrame implements iView {
 	 */
 	public View() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1024, 576);
+		setBounds(100, 100, 850, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -133,13 +132,21 @@ public class View extends JFrame implements iView {
 		consigneActuelle.setBounds(154, 26, 46, 14);
 		contentPane.add(consigneActuelle);
 		
-		dataset = new DefaultCategoryDataset();
-		chart = ChartFactory.createLineChart("", "Temps (Sec)", "Temperature (°C)", dataset);
+		// Temperature Chart
+		datasetTemp = new DefaultCategoryDataset();
+		chartTemp = ChartFactory.createLineChart("", "Temps (Sec)", "Temperature (°C)", datasetTemp);
 		
-		chartPanel = new ChartPanel(chart);
-		chartPanel.setBounds(400,10,800,400);
-		//chartPanel.setPreferredSize(new Dimension(800, 400));
-		contentPane.add(chartPanel);
+		chartTempPanel = new ChartPanel(chartTemp);
+		chartTempPanel.setBounds(400,10,400,200);
+		contentPane.add(chartTempPanel);
+		
+		// Humidity Cart
+		datasetHumi = new DefaultCategoryDataset();
+		chartHumi = ChartFactory.createLineChart("", "Temps (Sec)", "Humidité (%)", datasetHumi);
+		
+		chartHumiPanel = new ChartPanel(chartHumi);
+		chartHumiPanel.setBounds(400,220,400,200);
+		contentPane.add(chartHumiPanel);
 		
 		//TODO trouver comment suppr ça
 		this.setVisible(true);
@@ -207,8 +214,12 @@ public class View extends JFrame implements iView {
 		this.txtArea.setText(this.txtArea.getText()+"\n"+txt);
 	}
 	
-	public DefaultCategoryDataset getDataset() {
-		return dataset;
+	public DefaultCategoryDataset getDatasetTemp() {
+		return datasetTemp;
+	}
+	
+	public DefaultCategoryDataset getDatasetHumi() {
+		return datasetHumi;
 	}
 	
 }
