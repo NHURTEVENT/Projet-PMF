@@ -29,9 +29,9 @@ public class View extends JFrame implements iView {
 	public JLabel lblAlerteHumi;
 	
 	// TODO Write Paths
-	private final String PORTE_ICON = "";
-	private final String HUMID_ICON = "";
-	private final String EMPTY_ICON = "";
+	private final String PORTE_ICON = "C:\\Users\\Pierre Mazurier\\git\\Projet-PMF\\res\\OpenDoor_Icon.png";
+	private final String HUMID_ICON = "C:\\Users\\Pierre Mazurier\\git\\Projet-PMF\\res\\Humidity_Icon.png";
+	private final String EMPTY_ICON = "C:\\Users\\Pierre Mazurier\\git\\Projet-PMF\\res\\Empty_Icon.png";
 	private JLabel lblConsigneActuelle;
 	private JLabel consigneActuelle;
 	private JScrollPane log;
@@ -60,8 +60,9 @@ public class View extends JFrame implements iView {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// 2
 		tempConsigne = new JTextField();
-		tempConsigne.setBounds(127, 55, 86, 20);
+		tempConsigne.setBounds(150, 30, 86, 20);
 		contentPane.add(tempConsigne);
 		tempConsigne.setColumns(10);
 		
@@ -70,66 +71,66 @@ public class View extends JFrame implements iView {
 		txtArea = new JTextArea(300,800);
 
 		log = new JScrollPane(txtArea);
-		log.setBounds(10, 200, 300, 200);
+		log.setBounds(10, 220, 375, 200);
 		contentPane.add(log);
 		
-		
-		btnConfirmer.setBounds(245, 54, 89, 23);
+		// 3
+		btnConfirmer.setBounds(250, 30, 95, 20);
 		contentPane.add(btnConfirmer);
 		
 		tempInt = new JLabel("");
-		tempInt.setBounds(167, 88, 46, 14);
+		tempInt.setBounds(200, 50, 50, 20);
 		contentPane.add(tempInt);
 		
 		JLabel lblTempInt = new JLabel("Temp\u00E9rature interne");
-		lblTempInt.setBounds(43, 86, 106, 14);
+		lblTempInt.setBounds(10, 50, 200, 20);
 		contentPane.add(lblTempInt);
 		
-		JLabel lbltempExt = new JLabel("Temp\u00E9rature interne");
-		lbltempExt.setBounds(43, 111, 106, 14);
+		JLabel lbltempExt = new JLabel("Temp\u00E9rature externe");
+		lbltempExt.setBounds(10, 70, 200, 20);
 		contentPane.add(lbltempExt);
 		
 		
 		tempExt = new JLabel("");
-		tempExt.setBounds(167, 111, 46, 14);
+		tempExt.setBounds(200, 70, 50, 20);
 		contentPane.add(tempExt);
 		
 		JLabel lblTauxHumi = new JLabel("Taux d'humidit\u00E9");
-		lblTauxHumi.setBounds(43, 136, 106, 14);
+		lblTauxHumi.setBounds(10, 90, 200, 20);
 		contentPane.add(lblTauxHumi);
 		
 		tauxHumi = new JLabel("");
-		tauxHumi.setBounds(167, 136, 46, 14);
+		tauxHumi.setBounds(200, 90, 50, 20);
 		contentPane.add(tauxHumi);
 		
-		JLabel lblTempPeltier = new JLabel("Temp\u00E9rature du module Peltier");
-		lblTempPeltier.setBounds(43, 161, 122, 14);
+		JLabel lblTempPeltier = new JLabel("Temp\u00E9rature Peltier");
+		lblTempPeltier.setBounds(10, 110, 200, 20);
 		contentPane.add(lblTempPeltier);
 		
 		tempPeltier = new JLabel("");
-		tempPeltier.setBounds(177, 161, 46, 14);
+		tempPeltier.setBounds(200, 110, 50, 20);
 		contentPane.add(tempPeltier);
 		
 		lblAlerteHumi = new JLabel("");
 		lblAlerteHumi.setIcon(new ImageIcon(EMPTY_ICON));
-		lblAlerteHumi.setBounds(43, 175, 64, 64);
+		lblAlerteHumi.setBounds(84, 140, 64, 64);
 		contentPane.add(lblAlerteHumi);
 		
 		lblAlertePorte = new JLabel("");
 		lblAlertePorte.setIcon(new ImageIcon(EMPTY_ICON));
-		lblAlertePorte.setBounds(227, 175, 64, 64);
+		lblAlertePorte.setBounds(10, 140, 64, 64);
 		contentPane.add(lblAlertePorte);
 		
 		JLabel lblConsigne = new JLabel("Consigne");
-		lblConsigne.setBounds(43, 58, 46, 14);
+		lblConsigne.setBounds(10, 30, 200, 20);
 		contentPane.add(lblConsigne);
 		
 		lblConsigneActuelle = new JLabel("Consigne actuelle");
-		lblConsigneActuelle.setBounds(43, 26, 86, 14);
+		lblConsigneActuelle.setBounds(10, 10, 200, 20);
 		contentPane.add(lblConsigneActuelle);
 		
 		consigneActuelle = new JLabel("");
-		consigneActuelle.setBounds(154, 26, 46, 14);
+		consigneActuelle.setBounds(200, 10, 50, 20);
 		contentPane.add(consigneActuelle);
 		
 		// Temperature Chart
