@@ -33,6 +33,7 @@ public class UpdateModel implements Runnable{
 		connector.getCurrentTempPeltier();
 		connector.getCurrentTauxHumi();
 		connector.getCurrentConsigne();
+		connector.getModel().setPrevTemp(connector.getModel().getTempInt());
 		connector.getModel().setTempInt(connector.tempInt);
 		connector.getModel().setTempExt(connector.tempExt);
 		connector.getModel().setTempPeltier(connector.tempPeltier);

@@ -21,6 +21,8 @@ public class Main {
 		// Creation Controller
 		iCAD connector = new Connector(model,view);
 		Controller controller = new Controller(view, model, connector);
+		Thread t1 = new Thread(controller);
+		t1.start();
 		
 		// Creation CAD
 		connector.connect(connector.searchForPorts());

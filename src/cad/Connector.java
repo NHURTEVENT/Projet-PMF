@@ -34,7 +34,7 @@ public class Connector implements iCAD {
 	final static int SPACE_ASCII = 32;
 	final static int DASH_ASCII = 45;
 	final static int NEW_LINE_ASCII = 10;
-	public String inputString = "20_20_20_50_18_;";
+	public String inputString = "50_50_50_95_18_;";
 
 	public InputStream in;
 	public OutputStream out;
@@ -92,16 +92,14 @@ public class Connector implements iCAD {
 		CommPort commPort = null;
 
 		try {
-			// the method below returns an object of type CommPort
+			//On récupère le commPort
 			commPort = selectedPortIdentifier.open("TigerControlPanel", TIMEOUT);
-			// the CommPort object can be casted to a SerialPort object
+			//On le converti en port série
 			serialPort = (SerialPort) commPort;
 			
 			in = serialPort.getInputStream();
 			out = serialPort.getOutputStream();
 
-			// CODE ON SETTING BAUD RATE ETC OMITTED
-			// XBEE PAIR ASSUMED TO HAVE SAME SETTINGS ALREADY
 		} catch (PortInUseException e) {
 			getModel().setLog(" "+selectedPort + " is in use. (" + e.toString() + ")");
 			view.setLog(getModel().getLog());
