@@ -45,8 +45,8 @@ public class SerialReader implements Runnable {
 									System.out.println("read: " + temp);
 
 									if (temp.contains(";")) {
-										if (fullInput.contains("hi")) {
-											fullInput.replaceAll("hi", "");
+										if (fullInput.contains("updt")) {
+											fullInput.replaceAll("updat", "");
 										}
 										connector.inputString = fullInput;
 										System.out.println("full input: " + fullInput);

@@ -24,7 +24,7 @@ public class UpdateModel implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		connector.writeSerialPort("hi");
+		connector.writeSerialPort("updt");
 		
 		//on affecte découpe la string reçue 
 		//et on affecte les variables locales reçues

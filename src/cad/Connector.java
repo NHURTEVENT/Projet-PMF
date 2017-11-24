@@ -34,7 +34,7 @@ public class Connector implements iCAD {
 	final static int SPACE_ASCII = 32;
 	final static int DASH_ASCII = 45;
 	final static int NEW_LINE_ASCII = 10;
-	public String inputString = "0_0_0_0_0_;";
+	public String inputString = "20_20_20_50_18_;";
 
 	public InputStream in;
 	public OutputStream out;
@@ -216,6 +216,7 @@ public class Connector implements iCAD {
 		
 	}
 
+	@Deprecated
 	@Override
 	public void updateModel() {
 
@@ -225,7 +226,7 @@ public class Connector implements iCAD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		writeSerialPort("hi");
+		writeSerialPort("updt");
 		
 		//on affecte découpe la string reçue 
 		//et on affecte les variables locales reçues
