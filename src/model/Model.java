@@ -1,20 +1,31 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Observable;
+import java.util.Observer;
 
 public class Model extends Observable implements iModel {
 	
-	private float tempInt, tempExt, tempConsigne, tauxHumi, tempPeltier;
-	private float[] tempTable;
+	private float tempInt, tempExt, tauxHumi, tempPeltier,prevTemp;
+	private int consigneVoulue,tempConsigne;
+	private LinkedList tempTable;
+	public String log;
 	
 	public Model() {
+		tempInt = 0;
+		tempExt = 0;
+		tempConsigne =0;
+		tauxHumi = 0;
+		tempPeltier = 0;
+		consigneVoulue= 0;
+		tempTable = new LinkedList<Float>();
 	}
 
-	public float[] getTempTable() {
+	public LinkedList getTempTable() {
 		return tempTable;
 	}
 
-	public void setTempTable(float[] tempTable) {
+	public void setTempTable(LinkedList tempTable) {
 		this.tempTable = tempTable;
 	}
 
@@ -25,6 +36,14 @@ public class Model extends Observable implements iModel {
 	public void setTempInt(float tempInt) {
 		this.tempInt = tempInt;
 	}
+	
+	public float getPrevTemp() {
+		return prevTemp;
+	}
+
+	public void setPrevTemp(float temp) {
+		this.prevTemp = temp;
+	}
 
 	public float getTempExt() {
 		return tempExt;
@@ -34,12 +53,20 @@ public class Model extends Observable implements iModel {
 		this.tempExt = tempExt;
 	}
 
-	public float getTempConsigne() {
+	public int getTempConsigne() {
 		return tempConsigne;
 	}
 
-	public void setTempConsigne(float tempConsigne) {
+	public void setTempConsigne(int tempConsigne) {
 		this.tempConsigne = tempConsigne;
+	}
+	
+	public int getConsigneVoulue() {
+		return this.consigneVoulue;
+	}
+	
+	public void setConsigneVoulue(int tempConsigne) {
+		this.consigneVoulue = tempConsigne;
 	}
 
 	public float getTauxHumi() {
@@ -56,5 +83,22 @@ public class Model extends Observable implements iModel {
 
 	public void setTempPeltier(float tempPeltier) {
 		this.tempPeltier = tempPeltier;
+	}
+	
+	public void setLog(String txt){
+		this.log = txt;
+	}
+	
+	public void hasBeenChanged() {
+		setChanged();
+		this.notifyObservers();
+	}
+	
+	public void doAddObserver(Observer obs){
+		this.addObserver(obs);
+	}
+	
+	public String getLog(){
+		return this.log;
 	}
 }
