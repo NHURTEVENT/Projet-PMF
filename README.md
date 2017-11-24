@@ -1,239 +1,231 @@
-Cadrage du projet
-=================
+## Plan des rapports de stage
 
-Charte projet
--------------
+David Trimoulet dtrimoulet@cesi.fr
 
-### Objectifs (A1)
+# Gestion de projet Exia
 
--   Création d’un frigo permettant de maintenir une température définie
-    par l’utilisateur.
+- 1. Cadrage du projet Table des matières
+   - Charte projet
+   - Plan de Management Projet (A5)
+   - Cahier des charges (A2)
+   - Planning (A1)
+- 2. Réalisation du projet Analyse des risques (A4) Erreur! Signet non défini.
+   - Définition de l’architecture (A1)
+   - Sprint Meeting (A repeter) (A1)
+   - Développement du code en fonction des cas de tests (A repeter) (A1)
+   - Daily meeting (A repeter) (A1)
+- 3. Clôture du projet
+   - Validation des tests fonctionnels (A1)
+   - Evaluation de la vélocité (A1)
+   - REX du projet (A1)
+   - Bilan (A1)
+- 4. Annexes..........................................................................................................................................
+   - Outils
+   - Organisation
 
--   Le changement de la température intérieure doit se faire de sorte à
-    ce qu’aucune condensation ne se forme.
 
--   Une alerte doit se déclencher si la porte reste ouverte pendant trop
-    de temps.
+Plan des rapports de stage
 
--   Le refroidissement ne doit pas prendre trop de temps à refroidir
-    le contenu.
+David Trimoulet dtrimoulet@cesi.fr
 
--   Le frigo doit pouvoir être piloté par une application contenant une
-    interface graphique
+# Gestion de projet Exia
 
-    -   L’utilisateur doit pouvoir modifier la température de consigne,
+## 1. Cadrage du projet Table des matières
 
-    -   L’interface doit afficher l’évolution des températures,
+### Charte projet
 
-    -   Une indication doit apparaitre pour chaque alertes (Humidité &
-        Porte Ouverte).
+#### OBJ ECT IF S ( A1)
 
-### Enjeux (A2)
+- Création d’un frigo permettant de maintenir une température définie par l’utilisateur.
+- Le changement de la température intérieure doit se faire de sorte à ce qu’aucune
+    condensation ne se forme.
+- Une alerte doit se déclencher si la porte reste ouverte pendant trop de temps.
+- Le refroidissement ne doit pas prendre trop de temps à refroidir le contenu.
+- Le frigo doit pouvoir être piloté par une application contenant une interface graphique
+    o L’utilisateur doit pouvoir modifier la température de consigne,
+    o L’interface doit afficher l’évolution des températures,
+    o Une indication doit apparaitre pour chaque alertes (Humidité & Porte Ouverte).
+
+#### ENJ EUX ( A2)
 
 Application des connaissances des prosits précédents.
 
--   Electronique (Montages des capteurs sur la carte Arduino),
+- Electronique (Montages des capteurs sur la carte Arduino),
+- Thermodynamique (Fonctionnement d’un module Peltier),
+- Informatique (Interface Homme Machine en Java).
 
--   Thermodynamique (Fonctionnement d’un module Peltier),
+#### MACRO R ISQU ES ( A4)
 
--   Informatique (Interface Homme Machine en Java).
+#### MACRO PLANNING ( ET APES) ( A1)
 
-### Macro Risques (A4)
+```
+I- Analyse Fonctionnelle
+II- Gestion de projet
+III- Electronique
+IV- Informatique
+```
+1. Code Java
+    a) Modélisation (UML)
+    b) Implémentation
+2. Code Arduino
+V- Livrables
 
-### Macro planning (Etapes) (A1)
+#### ACT EUR S ( A1)
 
-1.  Analyse Fonctionnelle
+#### MACRO BU DGET ( A5)
 
-2.  Gestion de projet
+#### DEF IN IT ION DES R ESPON SABILIT E ( A1)
 
-3.  Electronique
 
-4.  Informatique
+Plan des rapports de stage
 
-    1.  Code Java
+David Trimoulet dtrimoulet@cesi.fr
 
-        1.  Modélisation (UML)
+# Gestion de projet Exia
 
-        2.  Implémentation
+### Plan de Management Projet (A5)
 
-    2.  Code Arduino
+### Cahier des charges (A2)
 
-5.  Livrables
+#### BESOIN S
 
-### Acteurs (A1)
+- Création d’un frigo permettant de maintenir une température définie par l’utilisateur.
+- Le changement de la température intérieure doit se faire de sorte à ce qu’aucune
+    condensation ne se forme.
+- Une alerte doit se déclencher si la porte reste ouverte pendant trop de temps.
+- Le refroidissement ne doit pas prendre trop de temps à refroidir le contenu.
+- Le frigo doit pouvoir être piloté par une application contenant une interface graphique
+    o L’utilisateur doit pouvoir modifier la température de consigne,
+    o L’interface doit afficher l’évolution des températures,
+    o Une indication doit apparaitre pour chaque alertes (Humidité & Porte Ouverte).
 
-### Macro Budget (A5)
-
-### Définition des responsabilité (A1)
-
-Plan de Management Projet (A5)
-------------------------------
-
-### Gestion des exigences
-
-### Gestion des risques
-
-### Gestion de la qualité
-
-### Gestion du changement
-
-### Gestion des approvisionnements
-
-### Gestion des RH
-
-### Gestion des utilisateurs
-
-### Gestion du budget
-
-Cahier des charges (A2)
------------------------
-
-### <img src="media/image1.png" width="556" height="347" /> Besoins
-
--   Création d’un frigo permettant de maintenir une température définie
-    par l’utilisateur.
-
--   Le changement de la température intérieure doit se faire de sorte à
-    ce qu’aucune condensation ne se forme.
-
--   Une alerte doit se déclencher si la porte reste ouverte pendant trop
-    de temps.
-
--   Le refroidissement ne doit pas prendre trop de temps à refroidir
-    le contenu.
-
--   Le frigo doit pouvoir être piloté par une application contenant une
-    interface graphique
-
-    -   L’utilisateur doit pouvoir modifier la température de consigne,
-
-    -   L’interface doit afficher l’évolution des températures,
-
-    -   Une indication doit apparaitre pour chaque alertes (Humidité &
-        Porte Ouverte).
-
-### Contraintes
+#### CONT RAINT ES
 
 Utilisation du matériel fournit :
 
--   Carte Arduino,
-
--   Module Peltier,
-
--   Corps du frigo.
+- Carte Arduino,
+- Module Peltier,
+- Corps du frigo.
 
 Date limite :
 
--   Vendredi 24 Novembre 2017.
+- Vendredi 24 Novembre 2017.
 
-### Critères de réussites
+#### CRIT ER ES D E R EU SSIT ES
+
+
+Plan des rapports de stage
+
+David Trimoulet dtrimoulet@cesi.fr
+
+# Gestion de projet Exia
 
 Affichage des températures sur l’IHM
 
 Possibilité de régler la consigne sur l’IHM
 
-### Tests fonctionnels
+#### T EST S FO NCT ION N ELS
 
--   Lecture port série
+- Lecture port série
+- Écriture port série
+- Modification du model par la CAD
+- Modification de la consigne par l’IHM
+- Alerte humidité
+- Alerte porte ouverte
+- Affichage des informations dans l’IHM
 
--   Écriture port série
+### Planning (A1)
 
--   Modification du model par la CAD
+#### OBS
 
--   Modification de la consigne par l’IHM
+#### PBS
 
--   Alerte humidité
+#### W BS
 
--   Alerte porte ouverte
 
--   Affichage des informations dans l’IHM
+Plan des rapports de stage
 
-Planning (A1)
--------------
+David Trimoulet dtrimoulet@cesi.fr
 
-### OBS
+# Gestion de projet Exia
 
-### PBS
-
-<img src="media/image2.png" width="604" height="154" />
-
-### WBS
-
-<img src="media/image3.png" width="603" height="596" />
-
-### PERT
+#### PERT
 
 Version en ligne zoomable:
 
-[*https://www.lucidchart.com/documents/edit/23d68692-8ccb-4809-a14c-2e99ee91843a?demo=on\#*](https://www.lucidchart.com/documents/edit/23d68692-8ccb-4809-a14c-2e99ee91843a?demo=on#)?
+https://www.lucidchart.com/documents/edit/23d68692-8ccb- 4809 - a14c-2e99ee91843a?demo=on#?
 
-<img src="media/image4.png" width="604" height="293" />
 
-### GANTT
+Plan des rapports de stage
 
-<img src="media/image5.png" width="604" height="400" />
+David Trimoulet dtrimoulet@cesi.fr
 
-Réalisation du projet
-=====================
+# Gestion de projet Exia
 
-Définition de l’architecture (A1)
----------------------------------
+#### GANTT
 
-### Diagramme de composant
+## 2. REALISATION DU PROJET
 
-<img src="media/image6.png" width="665" height="324" />
+#### DEFINITION DE L’ARCHIT ECT UR E (A1)
 
-### Diagramme de paquetage
+#### DIAGR AMME D E COMPO SANT
 
-<img src="media/image7.png" width="604" height="411" />
 
-Sprint Meeting (A repeter) (A1)
--------------------------------
+Plan des rapports de stage
 
-### Création d’une version
+David Trimoulet dtrimoulet@cesi.fr
 
-### Evaluation de la vélocité
+# Gestion de projet Exia
 
-### Planning Poker
+#### DIAGR AMME D E PAQU ET AGE
 
-### Modélisation et création des tests
+### Sprint Meeting (A repeter) (A1)
 
-*Diagramme de classe*
 
-<img src="media/image8.png" width="604" height="284" />
+Plan des rapports de stage
 
-*Diagramme de séquence*
+David Trimoulet dtrimoulet@cesi.fr
 
-<img src="media/image9.png" width="604" height="300" />
+# Gestion de projet Exia
 
-*Création des jeux de tests unitaires :*
+#### CREATION D’UNE VERSION
 
-Problèmes rencontrés lors de la visualisation des tests à écrire pour la
-CAD
+#### EVALUAT ION D E LA VELOCIT E
+
+#### PLANN ING PO KER
+
+#### MOD ELISAT ION ET CR EATION DES T EST S
+
+Diagramme de classe
+
+Diagramme de séquence
+
+
+Plan des rapports de stage
+
+David Trimoulet dtrimoulet@cesi.fr
+
+# Gestion de projet Exia
+
+Création des jeux de tests unitaires :
+
+Problèmes rencontrés lors de la visualisation des tests à écrire pour la CAD
 
 Test fonctionnels réalisés :
 
--   Lecture port série
+- Lecture port série
+- Écriture port série
+- Modification du model par la CAD
+- Modification de la consigne par l’IHM
+- Alerte humidité
+- Alerte porte ouverte
+- Affichage des informations dans l’IHM
 
--   Écriture port série
-
--   Modification du model par la CAD
-
--   Modification de la consigne par l’IHM
-
--   Alerte humidité
-
--   Alerte porte ouverte
-
--   Affichage des informations dans l’IHM
-
-Développement du code en fonction des cas de tests (A repeter) (A1)
--------------------------------------------------------------------
+#### DEVELOPPEMENT D U CODE EN FO NCT ION DES C AS D E T EST S ( A R EPET ER) ( A1)
 
 Une branche par feature.
 
-Daily meeting (A repeter) (A1)
-------------------------------
+### Daily meeting (A repeter) (A1)
 
 Point quotidien sur l’avancement basé sur les ‘commit’ de l’équipe
 
@@ -241,74 +233,69 @@ Revu de code aléatoire par le chef de projet
 
 Point sur les difficultés
 
-Clôture du projet
-=================
+## 3. Clôture du projet
 
-Validation des tests fonctionnels (A1)
---------------------------------------
+### Validation des tests fonctionnels (A1)
 
 Test fonctionnels réalisés :
 
--   Lecture port série
 
--   Écriture port série
+Plan des rapports de stage
 
--   Modification du model par la CAD
+David Trimoulet dtrimoulet@cesi.fr
 
--   Modification de la consigne par l’IHM
+# Gestion de projet Exia
 
--   Alerte humidité
+- Lecture port série
+- Écriture port série
+- Modification du model par la CAD
+- Modification de la consigne par l’IHM
+- Alerte humidité
+- Alerte porte ouverte
+- Affichage des informations dans l’IHM
 
--   Alerte porte ouverte
+#### EVALUAT ION D E LA VELOCIT E ( A1)
 
--   Affichage des informations dans l’IHM
+### REX du projet (A1)
 
-Evaluation de la vélocité (A1)
-------------------------------
+- Intéressant de communiquer avec une arduino
+- Intéressant de (re)voir les bases de la thermodynamique pour la vie courante
 
-REX du projet (A1)
-------------------
+### Bilan (A1)
 
--   Intéressant de communiquer avec une arduino
+#### PLANN ING R EEL
 
--   Intéressant de (re)voir les bases de la thermodynamique pour la vie
-    courante
+## 4. Annexes..........................................................................................................................................
 
-Bilan (A1)
-----------
 
-### Planning réel
+Plan des rapports de stage
 
-<img src="media/image10.png" width="604" height="415" />
+David Trimoulet dtrimoulet@cesi.fr
 
-Annexes
-=======
+# Gestion de projet Exia
 
-Outils
-------
+### Outils
 
-### Versionning
+#### VER SIO NN ING
 
-Github :
-[*https://github.com/*](https://github.com/)*NHURTEVENT/Projet-PMF*
+Github : https://github.com/NHURTEVENT/Projet-PMF
 
-### Gestion des exigences
+#### GEST ION D ES EXIG EN CES
 
-Trello :
-[*https://trello.com/*](https://trello.com/)*b/HxT3Whu1/projet-pmf*
+Trello : https://trello.com/b/HxT3Whu1/projet-pmf
 
-### Plannification
+#### PLANN IFICAT ION
 
-Trello :
-[*https://trello.com/*](https://trello.com/)*b/HxT3Whu1/projet-pmf*
+Trello : https://trello.com/b/HxT3Whu1/projet-pmf
 
-Organisation
-------------
+### Organisation
 
-### Sprint
+#### SPR INT
 
 Un sprint dure deux jours de travail pour ce projet
 
-### Daily Meeting
+#### DAILY MEET ING
 
 A chaque démarrage de demi-journée.
+
+
