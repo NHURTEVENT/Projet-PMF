@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-11-17" view-index="0" gantt-divider-location="494" resource-divider-location="300" version="2.8.5" locale="en_GB">
+    <description/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Name" width="247" order="0"/>
+        <field id="tpd4" name="Begin date" width="122" order="1"/>
+        <field id="tpd5" name="End date" width="121" order="2"/>
+        <option id="color.recent"><![CDATA[#33cc00 #cc3300 #9900cc #0099ff]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="39" name="Analyse Fonctionnelle" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+        <task id="1" name="Gestion de Projet" color="#0099ff" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true">
+            <task id="5" name="PBS" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+            <task id="6" name="WBS" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+            <task id="4" name="OBS" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+            <task id="7" name="Pert" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+            <task id="8" name="Gant" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+        </task>
+        <task id="9" name="Electronique" color="#9900cc" meeting="false" start="2017-11-21" duration="1" complete="0" expand="true">
+            <task id="11" name="Schéma Montage" meeting="false" start="2017-11-21" duration="1" complete="0" expand="true"/>
+            <task id="12" name="Montage Electronique" meeting="false" start="2017-11-21" duration="1" complete="0" expand="true"/>
+        </task>
+        <task id="14" name="Code" color="#cc3300" meeting="false" start="2017-11-20" duration="3" complete="0" expand="true">
+            <task id="16" name="UML" meeting="false" start="2017-11-20" duration="1" complete="0" expand="true"/>
+            <task id="38" name="Tests Java" meeting="false" start="2017-11-21" duration="1" complete="0" expand="true"/>
+            <task id="18" name="Code Java" meeting="false" start="2017-11-21" duration="2" complete="0" expand="true">
+                <task id="19" name="Model" meeting="false" start="2017-11-21" duration="2" complete="0" expand="true"/>
+                <task id="20" name="View" meeting="false" start="2017-11-21" duration="2" complete="0" expand="true"/>
+                <task id="21" name="Conrtoller" meeting="false" start="2017-11-21" duration="2" complete="0" expand="true"/>
+                <task id="22" name="CAD" meeting="false" start="2017-11-21" duration="2" complete="0" expand="true"/>
+            </task>
+            <task id="23" name="Diagramme D'activité (Arduino)" meeting="false" start="2017-11-22" duration="1" complete="0" expand="true"/>
+            <task id="24" name="Code Arduino" meeting="false" start="2017-11-22" duration="1" complete="0" expand="true">
+                <task id="25" name="Récuperation de la consigne" meeting="false" start="2017-11-22" duration="1" complete="0" expand="true"/>
+                <task id="26" name="Pilotage du module Peltier" meeting="false" start="2017-11-22" duration="1" complete="0" expand="true"/>
+            </task>
+        </task>
+        <task id="27" name="Livrables" color="#33cc00" meeting="false" start="2017-11-23" duration="1" complete="0" expand="true">
+            <task id="28" name="Poster" meeting="false" start="2017-11-23" duration="1" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
