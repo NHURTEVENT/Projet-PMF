@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Observer;
 
 public interface iModel {
@@ -20,12 +21,14 @@ public interface iModel {
 	void setTauxHumi(float tauxHumi);
 	float getTempPeltier();
 	void setTempPeltier(float tempPeltier);
-	public float[] getTempTable();
-	public void setTempTable(float[] tempTable);
+	public LinkedList getTempTable();
+	public void setTempTable(LinkedList tempTable);
 	void setLog(String txt);
 	void hasBeenChanged();
 	void doAddObserver(Observer obs);
 	int getConsigneVoulue();
 	void setConsigneVoulue(int consigne);
 	String getLog();
+	void setPrevTemp(float tempInt2);
+	float getPrevTemp();
 }

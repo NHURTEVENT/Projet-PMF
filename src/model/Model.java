@@ -1,13 +1,14 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
 public class Model extends Observable implements iModel {
 	
-	private float tempInt, tempExt, tauxHumi, tempPeltier;
+	private float tempInt, tempExt, tauxHumi, tempPeltier,prevTemp;
 	private int consigneVoulue,tempConsigne;
-	private float[] tempTable;
+	private LinkedList tempTable;
 	public String log;
 	
 	public Model() {
@@ -17,13 +18,14 @@ public class Model extends Observable implements iModel {
 		tauxHumi = 0;
 		tempPeltier = 0;
 		consigneVoulue= 0;
+		tempTable = new LinkedList<Float>();
 	}
 
-	public float[] getTempTable() {
+	public LinkedList getTempTable() {
 		return tempTable;
 	}
 
-	public void setTempTable(float[] tempTable) {
+	public void setTempTable(LinkedList tempTable) {
 		this.tempTable = tempTable;
 	}
 
@@ -33,6 +35,14 @@ public class Model extends Observable implements iModel {
 
 	public void setTempInt(float tempInt) {
 		this.tempInt = tempInt;
+	}
+	
+	public float getPrevTemp() {
+		return prevTemp;
+	}
+
+	public void setPrevTemp(float temp) {
+		this.prevTemp = temp;
 	}
 
 	public float getTempExt() {

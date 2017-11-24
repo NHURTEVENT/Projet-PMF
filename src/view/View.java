@@ -29,9 +29,9 @@ public class View extends JFrame implements iView {
 	public JLabel lblAlerteHumi;
 	
 	// TODO Write Paths
-	private final String PORTE_ICON = "C:\\Users\\Pierre Mazurier\\git\\Projet-PMF\\res\\OpenDoor_Icon.png";
-	private final String HUMID_ICON = "C:\\Users\\Pierre Mazurier\\git\\Projet-PMF\\res\\Humidity_Icon.png";
-	private final String EMPTY_ICON = "C:\\Users\\Pierre Mazurier\\git\\Projet-PMF\\res\\Empty_Icon.png";
+	private final String PORTE_ICON = "C:\\Users\\Nico\\git\\Projet-PMF\\res\\OpenDoor_Icon.png";
+	private final String HUMID_ICON = "C:\\Users\\Nico\\git\\Projet-PMF\\res\\Humidity_Icon.png";
+	private final String EMPTY_ICON = "C:\\Users\\Nico\\git\\Projet-PMF\\res\\Empty_Icon.png";
 	private JLabel lblConsigneActuelle;
 	private JLabel consigneActuelle;
 	private JScrollPane log;

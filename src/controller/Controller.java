@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Observable;
 
 import javax.swing.JButton;
@@ -44,18 +45,24 @@ public class Controller implements iController, ActionListener {
 	}
 
 	// Alerte porte ouverte
-	@Override
-	public void alertePorteOuvrte() {
-
-		float[] tempTable = model.getTempTable();
-
-		if (tempTable[10] - tempTable[0] > 10) {
-			view.switchDoorIcon(1);
-		} else {
-			view.switchDoorIcon(0);
+		@Override
+		public void alertePorteOuvrte() {
+			
+			LinkedList tempTable = new LinkedList<Float>();
+			tempTable = model.getTempTable();
+			
+			/*if((float) tempTable.getLast() - (float) tempTable.getFirst() > 4) {
+				view.switchDoorIcon(1);
+			} else {
+				view.switchDoorIcon(0);
+			}*/
+			if(model.getTempInt() - model.getPrevTemp() > 4){
+				view.switchDoorIcon(1);
+			} else {
+				view.switchDoorIcon(0);
+			}
+			
 		}
-
-	}
 
 	@Override
 	public void update(Observable obs, Object obj) {
